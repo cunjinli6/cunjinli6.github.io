@@ -10,9 +10,10 @@
 </head>
 <body style="">abc
   <a href="tel:15222223333">拨打电话</a>
+  <div id="log"></div>
   <script>
     setTimeout(function() {
-      alert(JSON.stringify(window.config));
+      document.getElementById('#log').innerHTML = (JSON.stringify(window.config));
     }, 5000);
   </script>
 </body>
