@@ -12,9 +12,14 @@
   <a href="tel:15222223333">拨打电话</a>
   <div id="log"></div>
   <script>
+    var config = {a: 1};
+    Object.defineProperty(window, 'config', {
+      writable: false
+    });
     setTimeout(function() {
       document.getElementById('log').innerHTML = (JSON.stringify(window.config));
-    }, 5000);
+      window.config = {a: 2};
+    }, 2000);
   </script>
 </body>
 </html>
