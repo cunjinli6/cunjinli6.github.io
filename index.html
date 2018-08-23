@@ -78,6 +78,8 @@
       document.getElementById('clickHideKeyboard').addEventListener('click', function(e) {
         console.log('clickHideKeyboard');
         e.stopPropagation();
+        e.preventDefault();
+        console.log('clickHideKeyboard after');
       });
       document.getElementById('switchTab').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI switchTab')
