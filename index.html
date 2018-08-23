@@ -59,12 +59,14 @@
       });
       document.getElementById('navigateBack').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateBack')
+        alert('alert before navigateBack');
         wx.miniProgram.navigateBack()
       });
       document.getElementById('navigateTo').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateTo')
+        alert('alert before navigateTo');
         wx.miniProgram.navigateTo({
-          url: document.querySelector('input').value,
+          url: './navfromwebview/navfromwebview',
           complete: function(res) {
             console.log('complete res')
           }
