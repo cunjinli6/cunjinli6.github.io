@@ -29,6 +29,8 @@
     <br>
     <a href="https://www.baidu.com/">baidu</a>
     <br>
+    <a href="javascript:;" id="clickHideKeyboard">点击收起键盘</a>
+    <br>
     <input type="text" placeholder="测试一下触摸页面安卓的键盘是否会自动收起">
     <button class="weui-btn weui-btn_primary" id="iframeRedirect">iframe 跳转</button>
     <iframe src="https://www.baidu.com"></iframe>
@@ -72,6 +74,10 @@
             console.log('complete res')
           }
         })
+      });
+      document.getElementById('clickHideKeyboard').addEventListener('click', function(e) {
+        console.log('clickHideKeyboard');
+        e.stopPropagation();
       });
       document.getElementById('switchTab').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI switchTab')
