@@ -148,9 +148,13 @@
       })
 
   document.querySelector('#chooseImage').onclick = function () {
+    console.log('chooseImage')
     wx.chooseImage({
+      fail: function(res) {
+        console.log('fail', res);
+      },
       success: function (res) {
-        alert('已选择 ' + res.localIds.length + ' 张图片');
+        console.log('已选择 ' + res.localIds.length + ' 张图片');
         document.querySelector('#chooseImageResult').setAttribute('src', res.localIds[0])
       }
     });
