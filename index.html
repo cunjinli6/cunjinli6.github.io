@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js?t=4"></script>
   </head>
   <body>
-    <div>abcdefghijklmnopqrstu11122</div>
+    <div>abcdefghijklmnopqrstu1113322</div>
     <div><script>document.write(localStorage.getItem('reLaunch'));</script><</div>
     <button class="weui-btn weui-btn_primary" id="navigateBack">navigateBack</button>
     <button class="weui-btn weui-btn_primary" id="navigateTo">navigateTo</button>
@@ -96,10 +96,10 @@
         wx.miniProgram.reLaunch({
           url: document.querySelector('input').value,
           fail: function(res) {
-            localStorage.setItem('reLaunch', JSON.stringify(res));
+            localStorage.setItem('reLaunch', JSON.stringify(res) + 'fail');
           },
           success: function(res) {
-            localStorage.setItem('reLaunch', JSON.stringify(res));
+            localStorage.setItem('reLaunch', JSON.stringify(res) + "success");
           },
           complete: function(res) {
             console.log('complete res', res, '1')
