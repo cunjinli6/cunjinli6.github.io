@@ -8,6 +8,7 @@
   </head>
   <body>
     <div>abcdefghijklmnopqrstu</div>
+    <div><script>document.write(localStorage.getItem('reLaunch'));</script><</div>
     <button class="weui-btn weui-btn_primary" id="navigateBack">navigateBack</button>
     <button class="weui-btn weui-btn_primary" id="navigateTo">navigateTo</button>
     <button class="weui-btn weui-btn_primary" id="switchTab">switchTab</button>
@@ -95,6 +96,7 @@
         wx.miniProgram.reLaunch({
           url: document.querySelector('input').value,
           complete: function(res) {
+            localStorage.setItem('reLaunch', JSON.stringify(res));
             console.log('complete res', res, '1')
           }
         })
