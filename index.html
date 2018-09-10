@@ -166,6 +166,10 @@
       }
     });
   };
+      wx.miniProgram.on("onDataFromAppService", function(res) {
+        alert('receive data' + JSON.stringify(res));
+        console.log("onDataFromAppService", res);
+      })
       document.addEventListener('WeixinJSBridgeReady', function() {
         alert(13);
         WeixinJSBridge.on("onDataFromAppService", function(res) {
