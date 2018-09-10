@@ -167,6 +167,7 @@
     });
   };
       document.addEventListener && document.addEventListener('WeixinJSBridgeReady', function() {
+        alert(1);
         WeixinJSBridge.on("onDataFromAppService", function(res) {
           console.log("onDataFromAppService", res);
         });
