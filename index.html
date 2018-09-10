@@ -166,7 +166,7 @@
       }
     });
   };
-      wx.miniProgram.on("onDataFromAppService", function(res) {
+      wx.miniProgram.onLifeCycleEvent(function(res) {
         alert('receive data' + JSON.stringify(res));
         console.log("onDataFromAppService", res);
       })
