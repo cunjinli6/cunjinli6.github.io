@@ -978,10 +978,12 @@
       // 17.7 获取当前是否为小程序环境
       onLifeCycleEvent: function(cb) {
         _bindReadyEvent(function() {
-          _onMethod("onDataFromAppService", function(onRes) {
-          var data = onRes.data;
-          data = JSON.parse(data);
-            cb(data)
+          _onMethod("onDataFromAppService", {
+            complete: function(onRes) {
+              var data = onRes.data;
+              data = JSON.parse(data);
+                cb(data)
+            }
           });
         })
       }
