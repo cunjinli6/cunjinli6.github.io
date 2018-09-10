@@ -21,6 +21,7 @@
 
   function _onMethod(name, ext, innerInvokeArgs) {
     if (window.WeixinJSBridge) {
+      alert('weixinjsbridge on ' + name)
       WeixinJSBridge.on(name, function (res) {
         innerInvokeArgs && innerInvokeArgs.trigger && innerInvokeArgs.trigger(res);
         _methodCallback(name, res, ext);
