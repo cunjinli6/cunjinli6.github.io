@@ -166,11 +166,11 @@
       }
     });
   };
-      wx.ready(function() {
+      document.addEventListener && document.addEventListener('WeixinJSBridgeReady', function() {
         WeixinJSBridge.on("onDataFromAppService", function(res) {
           console.log("onDataFromAppService", res);
         });
-      });
+      }, false);
     </script>
     <script type="text/javascript" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>
   </body>
