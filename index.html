@@ -56,8 +56,12 @@
       });
       document.getElementById('navigateBack').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateBack')
-//         alert('alert before navigateBack');
-        wx.miniProgram.navigateBack()
+        alert('alert before navigateBack');
+        wx.miniProgram.navigateBack({
+          complete: function(res) {
+            alert('nav back res' + JSON.stringify(res))
+          }
+        })
       });
       document.getElementById('navigateTo').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateTo')
@@ -72,6 +76,7 @@
       document.getElementById('pushState').addEventListener('click', function() {
         console.log('pushState')
         history.pushState({state: 1}, 'helloworld', "https://cunjinli6.github.io/index2.html");
+        alert('push state complete');
       });
       document.getElementById('clickHideKeyboard').addEventListener('click', function(e) {
         console.log('clickHideKeyboard');
