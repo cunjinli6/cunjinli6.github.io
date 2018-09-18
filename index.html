@@ -17,13 +17,12 @@
     <button class="weui-btn weui-btn_primary" id="postMessage">postMessage</button>
     <button class="weui-btn weui-btn_primary" id="getEnv">getEnv</button>
     <button class="weui-btn weui-btn_primary" id="share">分享</button>
-    <button class="weui-btn weui-btn_primary" id="pushState">pushState后五权限？</button>
+    <button class="weui-btn weui-btn_primary" id="pushState">pushState后无权限？</button>
     <input type="text" value="/page/component/pages/map/map" style="width: 100%;border: 1px solid gray;height: 44px;" />
     <br>
     <button class="weui-btn weui-btn_primary" id="logLocation">location.href</button>
     <br>
     <button class="weui-btn weui-btn_primary" id="changeHash">change hash</button>
-    <button class="weui-btn weui-btn_primary" id="pushState">push state</button>
     <br>
     <input type="file" name="">
     <br>
@@ -72,7 +71,7 @@
       });
       document.getElementById('pushState').addEventListener('click', function() {
         console.log('pushState')
-        history.pushState({state: 1}, 'helloworld', "https://cunjinli6.github.io/index2.html");
+        history.pushState(null, 'helloworld', "index2.html");
         alert('push state complete');
       });
       document.getElementById('clickHideKeyboard').addEventListener('click', function(e) {
@@ -148,9 +147,6 @@
       }
       document.getElementById('changeHash').addEventListener('click', function() {
         location.hash = location.hash.replace('#', '') === 'a' ? 'b' : 'a'
-      })
-      document.getElementById('pushState').addEventListener('click', function() {
-        history.pushState(null, '', 'http://seasonhuang.github.io/')
       })
 
   document.querySelector('#chooseImage').onclick = function () {
