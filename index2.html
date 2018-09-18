@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+    <script type="text/javascript" src="https://cunjinli6.github.io/jWeixin.js?t=4"></script>
+  </head>
+  <body style="background:red;">
+    <div>1111</div>
+    <div><script>document.write(localStorage.getItem('reLaunch'));</script><</div>
+    <button class="weui-btn weui-btn_primary" id="navigateBack">navigateBack</button>
+    <button class="weui-btn weui-btn_primary" id="navigateTo">navigateTo</button>
+    <button class="weui-btn weui-btn_primary" id="switchTab">switchTab</button>
+    <button class="weui-btn weui-btn_primary" id="reLaunch">reLaunch</button>
+    <button class="weui-btn weui-btn_primary" id="redirectTo">redirectTo</button>
+    <button class="weui-btn weui-btn_primary" id="postMessage">postMessage</button>
+    <button class="weui-btn weui-btn_primary" id="getEnv">getEnv</button>
+    <button class="weui-btn weui-btn_primary" id="share">分享</button>
+    <button class="weui-btn weui-btn_primary" id="pushState">pushState后无权限？</button>
+    <input type="text" value="/page/component/pages/map/map" style="width: 100%;border: 1px solid gray;height: 44px;" />
+    <br>
+    <button class="weui-btn weui-btn_primary" id="logLocation">location.href</button>
+    <br>
+    <button class="weui-btn weui-btn_primary" id="changeHash">change hash</button>
+    <br>
+    <input type="file" name="">
+    <br>
+    <a href="javascript:;" id="clickHideKeyboard">点击收起键盘</a>
+    <br>
+    <input type="text" placeholder="测试一下触摸页面安卓的键盘是否会自动收起">
+    <img style="width: 90%;" src="./weapp.jpg">
+    <!-- <img src="./boast/fu.png"> -->
+
+    <button class="weui-btn weui-btn_primary" id="chooseImage">chooseImage</button>
+    <img id="chooseImageResult" src="">
+
+    <script type="text/javascript">
+      if (location.href.indexOf('redirect=1') > -1) {
+        wx.miniProgram.navigateTo({url: '/components/video/video'})
+      }
+      window.onload = function() {
+        document.querySelector('input').value = localStorage.getItem('path') || '/page/component/pages/map/map'
+      }
+      document.querySelector('input').onkeypress = function() {
+        console.log('keypress', e)
+      }
+      document.querySelector('input').addEventListener('input', function(e) {
+        console.log('input', e)
+        var val = document.querySelector('input').value
+        localStorage.setItem('path', val)
+      })
+      document.getElementById('navigateBack').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI navigateBack')
+        alert('alert before navigateBack');
+        wx.miniProgram.navigateBack({
+          complete: function(res) {
+            alert('nav back res' + JSON.stringify(res))
+          }
+        })
+      });
+      document.getElementById('navigateTo').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI navigateTo')
+//         alert('alert before navigateTo');
+        wx.miniProgram.navigateTo({
+          url: '/navfromwebview/navfromwebview',
+          complete: function(res) {
+            console.log('complete res')
+          }
+        })
+      });
+      document.getElementById('pushState').addEventListener('click', function() {
+        console.log('pushState')
+        history.pushState(null, 'helloworld', "index2.html");
+        alert('push state complete');
+      });
+      document.getElementById('clickHideKeyboard').addEventListener('click', function(e) {
+        console.log('clickHideKeyboard');
+        e.stopPropagation();
+        e.preventDefault();
+        console.log('clickHideKeyboard after');
+      });
+      document.getElementById('switchTab').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI switchTab')
+        wx.miniProgram.switchTab({
+          url: document.querySelector('input').value,
+          complete: function(res) {
+            console.log('complete res')
+          }
+        })
+      });
+      document.getElementById('reLaunch').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI reLaunch')
+        wx.miniProgram.reLaunch({
+          url: document.querySelector('input').value,
+          fail: function(res) {
+            localStorage.setItem('reLaunch', JSON.stringify(res) + 'fail');
+          },
+          success: function(res) {
+            localStorage.setItem('reLaunch', JSON.stringify(res) + "success");
+          },
+          complete: function(res) {
+            console.log('complete res', res, '1')
+          }
+        })
+      });
+      document.getElementById('redirectTo').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI redirectTo')
+        wx.miniProgram.redirectTo({
+          url: document.querySelector('input').value,
+          complete: function(res) {
+            console.log('complete res')
+          }
+        })
+      });
+      document.getElementById('postMessage').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI postMessage')
+        wx.miniProgram.postMessage({
+          data: {foo: 'bar', timeStamp: Date.now()},
+          complete: function(res) {
+            console.log(res)
+          }
+        })
+      })
+      document.getElementById('getEnv').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI getEnv')
+        wx.miniProgram.getEnv(function(res) {
+          console.log(res)
+        })
+      })
+      document.getElementById('share').addEventListener('click', function() {
+        console.log('invokeMiniProgramAPI share')
+        WeixinJSBridge.invoke('invokeMiniProgramAPI', {
+          name: 'share',
+          arg: {
+            title: 'title',
+            desc: 'desc',
+            path: '/components/index',
+          }
+        })
+      })
+      document.getElementById('logLocation').addEventListener('click', function() {
+        console.log(location.href)
+      })
+      window.onhashchange = function() {
+        console.log('hashchange', location.hash)
+      }
+      document.getElementById('changeHash').addEventListener('click', function() {
+        location.hash = location.hash.replace('#', '') === 'a' ? 'b' : 'a'
+      })
+  document.querySelector('#chooseImage').onclick = function () {
+    console.log('chooseImage')
+    wx.chooseImage({
+      fail: function(res) {
+        console.log('fail', res);
+      },
+      success: function (res) {
+        console.log('已选择 ' + res.localIds.length + ' 张图片');
+        document.querySelector('#chooseImageResult').setAttribute('src', res.localIds[0])
+      }
+    });
+  };
+      wx.miniProgram.onLifeCycleEvent(function(res) {
+//         alert('receive data' + JSON.stringify(res));
+        console.log("onDataFromAppService", res);
+      })
+      document.addEventListener('WeixinJSBridgeReady', function() {
+        WeixinJSBridge.on("onDataFromAppService", function(res) {
+          console.log("onDataFromAppService", res);
+        });
+      }, false);
+    </script>
+    <script type="text/javascript" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>
+  </body>
+</html>
