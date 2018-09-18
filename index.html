@@ -60,12 +60,12 @@
       });
       document.getElementById('navigateBack').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateBack')
-        alert('alert before navigateBack');
+//         alert('alert before navigateBack');
         wx.miniProgram.navigateBack()
       });
       document.getElementById('navigateTo').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateTo')
-        alert('alert before navigateTo');
+//         alert('alert before navigateTo');
         wx.miniProgram.navigateTo({
           url: '/navfromwebview/navfromwebview',
           complete: function(res) {
@@ -168,16 +168,13 @@
     });
   };
       wx.miniProgram.onLifeCycleEvent(function(res) {
-        alert('receive data' + JSON.stringify(res));
+//         alert('receive data' + JSON.stringify(res));
         console.log("onDataFromAppService", res);
       })
       document.addEventListener('WeixinJSBridgeReady', function() {
-        alert(13);
         WeixinJSBridge.on("onDataFromAppService", function(res) {
-          alert('receive data' + JSON.stringify(res));
           console.log("onDataFromAppService", res);
         });
-        alert(12);
       }, false);
     </script>
     <script type="text/javascript" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>
