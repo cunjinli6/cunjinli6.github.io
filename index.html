@@ -51,9 +51,6 @@
         var val = document.querySelector('input').value
         localStorage.setItem('path', val)
       })
-      document.getElementById('iframeRedirect').addEventListener('click', function() {
-        document.querySelector('iframe').setAttribute('src', 'https://www.taobao.com/')
-      });
       document.getElementById('navigateBack').addEventListener('click', function() {
         console.log('invokeMiniProgramAPI navigateBack')
         alert('alert before navigateBack');
