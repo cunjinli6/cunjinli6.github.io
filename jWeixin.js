@@ -21,7 +21,6 @@
 
   function _onMethod(name, ext, innerInvokeArgs) {
     if (window.WeixinJSBridge) {
-      alert('weixinjsbridge on ' + name)
       WeixinJSBridge.on(name, function (res) {
         innerInvokeArgs && innerInvokeArgs.trigger && innerInvokeArgs.trigger(res);
         _methodCallback(name, res, ext);
@@ -978,9 +977,7 @@
       },
       // 17.7 获取当前是否为小程序环境
       onLifeCycleEvent: function(cb) {
-        alert('in life')
         _bindReadyEvent(function() {
-          alert('in life ready')
           _onMethod("onDataFromAppService", {
             complete: function(onRes) {
               var data = onRes.data;
