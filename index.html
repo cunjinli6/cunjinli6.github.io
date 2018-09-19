@@ -150,6 +150,10 @@
         location.hash = location.hash.replace('#', '') === 'a' ? 'b' : 'a'
       })
 
+      document.getElementById('replaceState').addEventListener('click', function() {
+        history.replaceState(null, "index2", "index2.html");
+        console.log('replace state complete');
+      })
   document.querySelector('#chooseImage').onclick = function () {
     console.log('chooseImage')
     wx.chooseImage({
