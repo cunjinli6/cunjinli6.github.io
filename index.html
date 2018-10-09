@@ -6,8 +6,9 @@
     <link rel="stylesheet" type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
     <script type="text/javascript" src="https://cunjinli6.github.io/jWeixin.js?t=4"></script>
   </head>
-  <body style="background:red;">
+  <body>
     <div>1111</div>
+    <div>11112222</div>
     <div><script>document.write(localStorage.getItem('reLaunch'));</script><</div>
     <div><script>document.write(navigator.userAgent);</script><</div>
     <button class="weui-btn weui-btn_primary" id="navigateBack">navigateBack</button>
@@ -39,6 +40,11 @@
     <img id="chooseImageResult" src="">
 
     <script type="text/javascript">
+      var count = 0
+      document.body.addEventListener('touchstart', function() {
+        count++
+        console.log('click count', count)
+      })
       if (location.href.indexOf('redirect=1') > -1) {
         wx.miniProgram.navigateTo({url: '/components/video/video'})
       }
