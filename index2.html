@@ -8,6 +8,7 @@
   </head>
   <body>
     <img style="width:50px; height:50px;" id="img">change1
+    <div id='div' style="-webkit-overflow-scrolling:touch;width:100%;"></div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
 <script type="text/javascript">
 var camera, scene, renderer;
@@ -18,7 +19,7 @@ function init() {
     renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    document.getElementById('div').appendChild(renderer.domElement);
     //
     camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.z = 400;
