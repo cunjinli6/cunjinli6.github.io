@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://cunjinli6.github.io/jWeixin.js?t=4"></script>
   </head>
   <body>
-    <img style="width:200px; height:200px;" id="img">llll
+    <img style="width:50px; height:50px;" id="img">change
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
 <script type="text/javascript">
 var camera, scene, renderer;
@@ -15,7 +15,7 @@ var mesh;
 init();
 animate();
 function init() {
-    renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: true });
+    renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: false });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
