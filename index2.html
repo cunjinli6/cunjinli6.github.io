@@ -16,7 +16,7 @@ var mesh;
 init();
 animate();
 function init() {
-    renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: true });
+    renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: false });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('div').appendChild(renderer.domElement);
@@ -39,10 +39,11 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function animate() {
-//     requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     mesh.rotation.x += 0.005;
     mesh.rotation.y += 0.01;
     renderer.render(scene, camera);
+    document.getElementById("img").src = renderer.domElement.toDataURL()
 }
 </script>
 </body>
