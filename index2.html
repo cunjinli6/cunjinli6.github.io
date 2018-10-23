@@ -44,11 +44,6 @@ function animate() {
     mesh.rotation.y += 0.01;
     renderer.render(scene, camera);
     document.getElementById("img").src = renderer.domElement.toDataURL()
-var st = Date.now()
-  while(true) {
-    // 暴力死循环5s
-    if (Date.now() - st < 5000) continue
-  }
 }
 </script>
 </body>
