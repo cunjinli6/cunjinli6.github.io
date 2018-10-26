@@ -13,11 +13,22 @@
 <script type="text/javascript">
 var camera, scene, renderer;
 var mesh;
-init();
-animate();
+// init();
+// animate();
+  2d()
+
 setTimeout(function() {
-  fps();
+//   fps();
+  fps2d()
 }, 3000);
+  var c
+function 2d() {
+  c=document.createElement("c");
+    document.getElementById('div').appendChild(c);
+var ctx=c.getContext("2d");
+ctx.fillStyle="red";
+ctx.fillRect(0,0,300,150);
+}
 function init() {
     renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: false });
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -53,6 +64,9 @@ function fps() {
   context.clear(-1, -1, 0, 0)
   document.getElementById("img").src = renderer.domElement.toDataURL()
 }
+  function fps2d() {
+    document.getElementById("img").src = c.toDataURL()
+  }
 </script>
 </body>
 </html>
