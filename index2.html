@@ -50,7 +50,7 @@ function animate() {
 }
 function fps() {
   var context = renderer.domElement.getContext("webgl")
-  context.flush()
+  context.clear(-1, -1, 0, 0)
   document.getElementById("img").src = renderer.domElement.toDataURL()
 }
 </script>
