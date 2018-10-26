@@ -61,7 +61,7 @@ function animate() {
 }
 function fps() {
   var context = renderer.domElement.getContext("webgl")
-  context.drawArrays(context.POINTS, -1, 1)
+  context.drawArrays(context.POINTS, 0, 1)
   document.getElementById("img").src = renderer.domElement.toDataURL()
 }
   function fps2d() {
