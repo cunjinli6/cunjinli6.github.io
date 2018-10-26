@@ -42,14 +42,17 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function animate() {
-    requestAnimationFrame(animate);
+//     requestAnimationFrame(animate);
     mesh.rotation.x += 0.005;
     mesh.rotation.y += 0.01;
     renderer.render(scene, camera);
 //     document.getElementById("img").src = renderer.domElement.toDataURL()
 }
 function fps() {
-  requestAnimationFrame(fps)
+  var context = renderer.domElement.getContext("webgl")
+  var imgData = context.getImageData(0, 0, 1, 1)
+  context.putImageData(imgData, 0, 0)
+  renderer.domElement.toDataURL()
   document.getElementById("img").src = renderer.domElement.toDataURL()
 }
 </script>
