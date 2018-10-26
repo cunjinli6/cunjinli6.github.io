@@ -14,9 +14,10 @@
 var camera, scene, renderer;
 var mesh;
 init();
-fps();
 animate();
-
+setTimeout(function() {
+  fps();
+}, 3000);
 function init() {
     renderer = new THREE.WebGLRenderer({ alpha: true, preserveDrawingBuffer: false });
     renderer.setPixelRatio(window.devicePixelRatio);
