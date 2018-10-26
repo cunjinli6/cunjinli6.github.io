@@ -53,15 +53,15 @@ function onWindowResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function animate() {
-//     requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     mesh.rotation.x += 0.005;
     mesh.rotation.y += 0.01;
     renderer.render(scene, camera);
 //     document.getElementById("img").src = renderer.domElement.toDataURL()
 }
 function fps() {
-  var context = renderer.domElement.getContext("webgl")
-  context.drawArrays(context.POINTS, 0, 1)
+//   var context = renderer.domElement.getContext("webgl")
+//   context.drawArrays(context.POINTS, 0, 1)
   document.getElementById("img").src = renderer.domElement.toDataURL()
 }
   function fps2d() {
