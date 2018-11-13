@@ -12,7 +12,7 @@
       <button class="weui-btn weui-btn_primary" id="changeHash1">changeHash1</button>
       <script>
         document.getElementById('currentHash').innerHTML = location.hash
-        document.getElementById('currentHash').addEventListener('click', function() {
+        document.getElementById('changeHash1').addEventListener('click', function() {
           location.hash = 'hashAfterChange'
           document.getElementById('currentHash').innerHTML = location.hash
         })
