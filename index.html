@@ -7,6 +7,16 @@
     <script type="text/javascript" src="https://cunjinli6.github.io/jWeixin.js?t=4"></script>
   </head>
   <body>
+    <div>
+      当前hash：<span id="currentHash"></span>
+      <button class="weui-btn weui-btn_primary" id="changeHash1">changeHash1</button>
+      <script>
+        document.getElementById('currentHash').innerHTML = location.hash
+        document.getElementById('currentHash').addEventListener('click', function() {
+          location.hash = 'hashAfterChange'
+        })
+      </script>
+    </div>
     <div>1111</div>
     <div>11112222</div>
     <div><script>document.write(localStorage.getItem('reLaunch'));</script><</div>
