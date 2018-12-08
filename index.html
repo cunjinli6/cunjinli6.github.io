@@ -63,8 +63,8 @@
         wx.miniProgram.navigateTo({url: '/components/video/video'})
       }
       window.onload = function() {
-        wx.onPageStateChange(function(res) {
-          console.log('onPageStateChange', res)
+        wx.on('onPageStateChange', function(res) {
+          console.log('onPageStateChange', resFRw)
         })
         
         document.querySelector('input').value = localStorage.getItem('path') || '/page/component/pages/map/map'
