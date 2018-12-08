@@ -63,9 +63,15 @@
         wx.miniProgram.navigateTo({url: '/components/video/video'})
       }
       window.onload = function() {
-        wx.onPageStateChange(function(res) {
+        WeixinJSBridge.on('onPageStateChange', function(res) {
           console.log('onPageStateChange', res)
         })
+        
+        console.log('wx', wx)
+        console.log('WeixinJSBridge', WeixinJSBridge)
+//         wx.onPageStateChange(function(res) {
+//           console.log('onPageStateChange', res)
+//         })
         
         document.querySelector('input').value = localStorage.getItem('path') || '/page/component/pages/map/map'
       }
