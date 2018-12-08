@@ -62,17 +62,7 @@
       if (location.href.indexOf('redirect=1') > -1) {
         wx.miniProgram.navigateTo({url: '/components/video/video'})
       }
-      window.onload = function() {
-        WeixinJSBridge.on('onPageStateChange', function(res) {
-          console.log('onPageStateChange', res)
-        })
-        
-        console.log('wx', wx)
-        console.log('WeixinJSBridge', WeixinJSBridge)
-//         wx.onPageStateChange(function(res) {
-//           console.log('onPageStateChange', res)
-//         })
-        
+      window.onload = function() {  
         document.querySelector('input').value = localStorage.getItem('path') || '/page/component/pages/map/map'
       }
       document.querySelector('input').onkeypress = function() {
@@ -203,6 +193,9 @@
         console.log("onDataFromAppService", res);
       })
       document.addEventListener('WeixinJSBridgeReady', function() {
+        WeixinJSBridge.on('onPageStateChange', function(res) {
+          console.log('onPageStateChange', res)
+        })
         WeixinJSBridge.on("onDataFromAppService", function(res) {
           console.log("onDataFromAppService", res);
         });
