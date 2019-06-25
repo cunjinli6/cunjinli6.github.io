@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://cunjinli6.github.io/jWeixin.js?t=4"></script>
   </head>
   <body>
-    <div style="position:fixed;background-color:red;">fixed element</div>
+    <div style="position:fixed;background-color:red;">fixed element2</div>
     <div>
       当前hash：<span id="currentHash"></span>
       <button class="weui-btn weui-btn_primary" id="changeHash1">changeHash1</button>
@@ -202,6 +202,9 @@
           console.log("onDataFromAppService", res);
         });
       }, false);
+      window.setInterval(function() {
+        console.log('in inertval', Date.now())
+      }, 2000)
     </script>
     <script type="text/javascript" src="https://res.wx.qq.com/mmbizwap/zh_CN/htmledition/js/vconsole/2.5.1/vconsole.min.js"></script>
   </body>
